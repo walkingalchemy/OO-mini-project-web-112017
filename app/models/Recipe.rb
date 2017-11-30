@@ -20,8 +20,18 @@ class Recipe
 
   def allergens
     self.ingredients.select do |ingredient|
-      Allergen.all.include?(ingredient)
-    end 
+      Allergen.all.map do |allergen|
+        allergen.ingredient
+      end.include?(ingredient)
+    end
+  end
+
+  def users
+    RecipeCard.all.select do |card|
+      card.recipe == self
+    end.map do |card|
+      card.user
+    end.uniq
   end
 
 

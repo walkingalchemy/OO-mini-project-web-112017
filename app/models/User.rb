@@ -6,8 +6,16 @@ class User
     @@all << self
   end
 
-  def add_recipe_card(recipe)
-    RecipeCard.new(recipe, self)
+  def safe_recipes
+    Recipe.all.reject do |recipe|
+      recipe.ingredients.any? do |ingredient|
+        allergens.include?(ingredient)
+      end
+    end
+  end
+
+  def add_recipe_card(recipe, date, rating)
+    RecipeCard.new(recipe, date, rating, self)
   end
 
   def declare_allergen(ingredient)
@@ -19,11 +27,21 @@ class User
   end
 
   def allergens
-    Allergen.all.select {|ingredient| ingredient.user == self}
+    Allergen.all.select {|ingredient| ingredient.user == self}.map do |allergen|
+      allergen.ingredient
+    end
   end
 
   def most_recent_recipe
-    self.recipes.last
+    self.recipes.sort_by do |recipe|
+      recipe.date
+    end.last
+  end
+
+  def top_three_recipes
+    self.recipes.sort_by do |recipe|
+      recipe.rating
+    end.last(3).reverse
   end
 
 
