@@ -21,6 +21,10 @@ class User
     RecipeCard.all.select {|recipe| recipe.user == self}
   end
 
+  def allergens
+    Allergen.all.select {|ingredient| ingredient.user == self}
+  end
+
 
 
 end

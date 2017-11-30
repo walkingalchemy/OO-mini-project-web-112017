@@ -6,7 +6,7 @@ class Recipe
   end
 
   def add_ingredients(ingredient_array)
-    ingredient_array.map {|ingredient| RecipeIngredient.new(ingredient, self)}    
+    ingredient_array.map {|ingredient| RecipeIngredient.new(ingredient, self)}
   end
 
 
