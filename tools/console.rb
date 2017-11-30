@@ -11,9 +11,12 @@ pork = Ingredient.new("Pork")
 
 leslie.add_recipe_card(jambalaya)
 leslie.add_recipe_card(bolognese)
+sebastian.add_recipe_card(jambalaya)
 
 sebastian.declare_allergen(penicillin)
 sebastian.declare_allergen(pork)
+
+bolognese.add_ingredients([pork])
 
 
 
