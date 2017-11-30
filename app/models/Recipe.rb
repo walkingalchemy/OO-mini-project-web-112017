@@ -1,8 +1,9 @@
 class Recipe
   attr_accessor :dish
-
+  @@all = []
   def initialize(dish)
     @dish = dish
+    @@all << self
   end
 
   def add_ingredients(ingredient_array)
@@ -14,5 +15,9 @@ class Recipe
   # def users
   #   RecipeCard.all.select {|recipe| recipe. == self}
   # end
+
+  def self.all
+    @@all
+  end
 
 end
