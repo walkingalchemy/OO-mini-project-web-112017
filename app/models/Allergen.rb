@@ -1,0 +1,6 @@
+class Allergen
+
+
+
+
+end
