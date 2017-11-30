@@ -17,6 +17,7 @@ sebastian.declare_allergen(penicillin)
 sebastian.declare_allergen(pork)
 
 bolognese.add_ingredients([pork])
+bolognese.add_ingredients([penicillin])
 
 
 

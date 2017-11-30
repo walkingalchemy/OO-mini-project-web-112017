@@ -18,6 +18,14 @@ class Recipe
     end
   end
 
+  def allergens
+    self.ingredients.select do |ingredient|
+      Allergen.all.include?(ingredient)
+    end 
+  end
+
+
+
   def self.most_popular
     users_count = {}
     RecipeCard.all.each do |card|
